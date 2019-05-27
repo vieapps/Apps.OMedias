@@ -1,0 +1,16 @@
+<ion-tabs (ionTabsDidChange)="onTabsDidChange($event)">
+	<ion-tab-bar slot="bottom">
+		<ion-tab-button tab="channels">
+			<ion-icon name="radio"></ion-icon>
+			<ion-label>{{ labels.channels }}</ion-label>
+		</ion-tab-button>
+		<ion-tab-button tab="medias">
+			<ion-icon name="headset"></ion-icon>
+			<ion-label>{{ labels.medias }}</ion-label>
+		</ion-tab-button>
+		<ion-tab-button tab="all">
+			<ion-icon name="apps"></ion-icon>
+			<ion-label>{{ labels.all }}</ion-label>
+		</ion-tab-button>
+	</ion-tab-bar>
+</ion-tabs>

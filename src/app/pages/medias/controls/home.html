@@ -1,0 +1,14 @@
+<ion-list *ngFor="let group of groups; trackBy: trackItem" padding>
+	<ion-list-header>
+		<ion-label>
+			{{ group.name }}
+		</ion-label>
+	</ion-list-header>
+	<ion-item *ngFor="let category of group.categories; trackBy: trackItem" (click)="openItem(group, category)" detail="false">
+		<ion-icon *ngIf="category.icon !== ''" [name]="category.icon" slot="start"></ion-icon>
+		<ion-label>
+			<img *ngIf="category.image !== ''" [src]="category.image" float-start/>
+			{{ category.name }}
+		</ion-label>
+	</ion-item>
+</ion-list>

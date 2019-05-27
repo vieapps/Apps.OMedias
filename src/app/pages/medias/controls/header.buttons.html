@@ -1,0 +1,9 @@
+<ion-button *ngIf="!this.configSvc.isAuthenticated && this.authSvc.canRegisterNewAccounts" (click)="registerAsync()">
+	<ion-icon name="person-add" slot="icon-only"></ion-icon>
+</ion-button>
+<ion-button *ngIf="!this.configSvc.isAuthenticated" (click)="loginAsync()">
+	<ion-icon name="log-in" slot="icon-only"></ion-icon>
+</ion-button>
+<ion-button *ngIf="this.configSvc.isAuthenticated" (click)="viewProfileAsync()">
+	<ion-icon name="person" slot="icon-only"></ion-icon>
+</ion-button>

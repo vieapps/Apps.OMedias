@@ -1,0 +1,18 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button *ngIf="configSvc.appConfig.services.active === 'books'"></ion-menu-button>
+		</ion-buttons>
+		<ion-buttons slot="end">
+			<control-media-header-buttons *ngIf="configSvc.appConfig.services.active === 'omedias'"></control-media-header-buttons>
+		</ion-buttons>
+		<ion-title>
+			{{ title }}
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<control-book-home-screen *ngIf="configSvc.appConfig.services.active === 'books'" [changes]="changes"></control-book-home-screen>
+	<control-media-home-screen *ngIf="configSvc.appConfig.services.active === 'omedias'" [changes]="changes"></control-media-home-screen>
+</ion-content>

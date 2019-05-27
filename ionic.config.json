@@ -1,0 +1,7 @@
+{
+  "name": "OMedias.Ionic",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

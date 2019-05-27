@@ -1,0 +1,45 @@
+<ion-app>
+	<ion-menu *ngIf="configSvc.appConfig.services.active === 'books'">
+		<ion-header>
+			<ion-toolbar>
+				<ion-thumbnail *ngIf="sidebar.left.avatar" slot="start">
+					<ion-menu-toggle auto-hide="false">
+						<a routerLink="/users/profile/my" routerDirection="forward">
+							<img [src]="sidebar.left.avatar" />
+						</a>
+					</ion-menu-toggle>
+				</ion-thumbnail>
+				<ion-title>
+					{{ sidebar.left.title }}
+				</ion-title>
+			</ion-toolbar>
+		</ion-header>
+		<ion-content>
+			<ion-list>
+				<ion-menu-toggle auto-hide="false" *ngFor="let menu of sidebar.left.menu; trackBy: trackSidebarItem">
+					<ion-list-header *ngIf="menu.title">
+						<ion-label>
+							<ion-icon *ngIf="menu.icon" [name]="menu.icon" slot="start"></ion-icon>
+							<img *ngIf="menu.thumbnail" [src]="menu.thumbnail" float-start/>
+							{{ menu.title }}
+						</ion-label>
+					</ion-list-header>
+					<ion-item *ngIf="menu.parent" [routerLink]="[menu.parent.url]" [queryParams]="menu.parent.queryParams" [routerDirection]="menu.parent.direction" (click)="menu.parent.onClick()">
+						<ion-icon name="arrow-back" slot="start"></ion-icon>
+						<ion-label>
+							{{ menu.parent.title }}
+						</ion-label>
+					</ion-item>
+					<ion-item *ngFor="let item of menu.items; trackBy: trackSidebarItem" [routerLink]="[item.url]" [queryParams]="item.queryParams" [routerDirection]="item.direction" [detail]="item.detail" (click)="item.onClick()">
+						<ion-icon *ngIf="item.icon" [name]="item.icon" slot="start"></ion-icon>
+						<ion-label>
+							<img *ngIf="item.thumbnail" [src]="item.thumbnail" float-start/>
+							{{ item.title }}
+						</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+			</ion-list>
+		</ion-content>
+	</ion-menu>
+	<ion-router-outlet main></ion-router-outlet>
+</ion-app>

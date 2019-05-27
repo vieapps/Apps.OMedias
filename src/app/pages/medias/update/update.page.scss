@@ -1,0 +1,14 @@
+.thumbnail > div {
+	width: 150px;
+	float: left;
+	padding-right: 20px;
+}
+.thumbnail > div > div {
+	text-align: center;
+	padding-bottom: 10px;
+}
+@media only screen and (min-width: 768px) {
+	.thumbnail > div {
+		width: 300px;
+	}
+}

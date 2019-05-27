@@ -1,0 +1,96 @@
+{
+	"omedias": {
+		"name": "Media theo yêu cầu",
+		"tabs": {
+			"channels": {
+				"title": "Các kênh nổi bật",
+				"label": "Kênh"
+			},
+			"medias": {
+				"title": "Các kênh đã phát",
+				"label": "Đã phát"
+			},
+			"all": {
+				"title": "Hệ thống",
+				"label": ""
+			}
+		},
+		"controls": {
+			"Title": {
+				"label": "Tiêu đề"
+			},
+			"Summary": {
+				"label": "Tóm tắt"
+			},
+			"Speakers": {
+				"label": "Diễn giả"
+			},
+			"MediaURI": {
+				"label": "Liên kết media",
+				"description": "Liên kết trỏ đến file media (.mp3 cho audio, .mp4 cho video)"
+			},
+			"Categories": {
+				"label": "Thể loại"
+			},
+			"Tags": {
+				"label": "Thẻ phân loại",
+				"description": "Các thẻ phân loại được phân cách bằng dấu phẩy (,)"
+			},
+			"StartingTime": {
+				"label": "Thời điểm bắt đầu",
+				"description": "Là thời gian mà nội dung này sẽ được bắt đầu xuất hiện trên hệ thống"
+			},
+			"EndingTime": {
+				"label": "Thời điểm kết thúc",
+				"description": "Là thời gian mà nội dung này sẽ được bỏ (hạ xuống) khỏi hệ thống, không nhập để chỉ định không bao giờ kết thúc"
+			},
+			"Status": {
+				"label": "Trạng thái",
+				"description": "Chỉ định trạng thái của nội dung, lưu ý: nội dung sẽ chỉ xuất hiện công khai khi trạng thái là Published"
+			},
+			"Media": {
+				"label": "File media"
+			},
+			"Thumbnail": {
+				"label": "Ảnh đại diện",
+				"labels": {
+					"current": "Ảnh hiện tại",
+					"new": "Ảnh mới"
+				}
+			}
+		},
+		"title": {
+			"create": "Khởi tạo nội dung",
+			"update": "Cập nhật nội dung",
+			"search": "Tìm kiếm nội dung"
+		},
+		"messages": {
+			"create": {
+				"success": "Nội dung đã được khởi tạo...",
+				"error": "Đã xảy ra lỗi trong quá trình khởi tạo..."
+			},
+			"update": {
+				"confirm": "Chắc chắn muốn huỷ bỏ cập nhật?",
+				"success": "Nội dung đã được cập nhật...",
+				"error": "Đã xảy ra lỗi trong quá trình cập nhật..."
+			},
+			"delete": {
+				"confirm": "Chắc chắn muốn xoá bỏ nội dung này?",
+				"success": "Nội dung đã được xoá bỏ...",
+				"error": "Đã xảy ra lỗi trong quá trình xoá bỏ..."
+			}
+		},
+		"list": {
+			"searchbar": {
+				"search": "Đặt từ khoá trong \"..\" để tìm chính xác (không dấu cũng OK)",
+				"filter": "Tìm nhanh, không dấu cũng OK"
+			}
+		},
+		"update": {
+			"thumbnail": {
+				"current": "Hiện tại",
+				"new": "Mới"
+			}
+		}
+	}
+}

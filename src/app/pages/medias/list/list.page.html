@@ -1,0 +1,69 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons *ngIf="canBack" slot="start">
+			<ion-back-button [defaultHref]="defaultHref" [text]="undefined"></ion-back-button>
+		</ion-buttons>
+		<ion-buttons slot="end">
+			<ion-button *ngIf="canCreate" (click)="createAsync()">
+				<ion-icon name="add" slot="icon-only"></ion-icon>
+			</ion-button>
+			<ion-button *ngIf="canSearch" (click)="openSearch()">
+				<ion-icon name="search" slot="icon-only"></ion-icon>
+			</ion-button>
+			<control-media-header-buttons *ngIf="!canSearch && !searching"></control-media-header-buttons>
+		</ion-buttons>
+		<ion-title [hidden]="searching">
+			{{ title }}
+		</ion-title>
+		<ion-searchbar [hidden]="!searching"
+			(ionChange)="onStartSearch($event)"
+			(ionCancel)="onCancelSearch()"
+			(ionClear)="onCancelSearch()"></ion-searchbar>
+	</ion-toolbar>
+</ion-header>
+
+<ion-footer *ngIf="tab === undefined && medias !== undefined && !filtering && pagination">
+	<ion-toolbar>
+		<div>
+			<span float-start>
+				<ion-icon name="recording" color="primary" slot="start"></ion-icon>
+				<span>
+					{{ totalRecords | number:'':locale }} / {{ pagination.TotalRecords | number:'':locale }}	
+				</span>
+			</span>
+			<span [hidden]="pagination.TotalPages < 2" float-end padding-end>
+				<ion-icon name="code" color="primary" slot="start"></ion-icon>
+				<span>
+					{{ pageNumber | number:'':locale }} / {{ pagination.TotalPages | number:'':locale }}
+				</span>
+			</span>
+		</div>
+	</ion-toolbar>
+</ion-footer>
+
+<ion-content>
+
+	<ion-list *ngIf="category === undefined" padding>
+		<ion-item *ngFor="let category of categories; trackBy: trackCategory" (click)="openCategory(category)" detail="true">
+			<ion-icon *ngIf="category.icon != ''" [name]="category.icon" slot="start"></ion-icon>
+			<ion-label>
+				<img *ngIf="category.image != ''" [src]="category.image" float-start/>
+				{{ category.name }}
+			</ion-label>
+		</ion-item>
+	</ion-list>
+
+	<ion-list *ngIf="category !== undefined || searching" padding-end>
+		<ion-item *ngFor="let media of medias; let idx=index; trackBy: trackMedia" (click)="openMedia(media)" detail="false">
+			<ion-label>
+				<h2>
+					{{ media.Title }}
+				</h2>
+			</ion-label>
+		</ion-item>
+	</ion-list>
+	<ion-infinite-scroll *ngIf="medias !== undefined" threshold="288px" position="bottom" (ionInfinite)="onScroll()">
+		<ion-infinite-scroll-content></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+
+</ion-content>

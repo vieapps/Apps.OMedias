@@ -1,0 +1,66 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button *ngIf="buttons.cancel" color="secondary" (click)="buttons.cancel.handler()">
+				<ion-icon *ngIf="buttons.cancel.icon" [name]="buttons.cancel.icon" slot="start"></ion-icon>
+				{{ buttons.cancel.text }}
+			</ion-button>
+		</ion-buttons>
+		<ion-buttons *ngIf="buttons.ok" slot="end">
+			<ion-button color="primary" (click)="buttons.ok.handler()">
+				<ion-icon *ngIf="buttons.ok.icon" [name]="buttons.ok.icon" slot="start"></ion-icon>
+				{{ buttons.ok.text }}
+			</ion-button>
+		</ion-buttons>
+		<ion-title>
+			{{ title }}
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<app-form *ngIf="config !== undefined"
+		[form]="form" [config]="config" [controls]="controls" [value]="media" (initEvent)="onFormInitialized($event)"></app-form>
+		<ion-item class="select-file">
+			<ion-label position="stacked">
+				{{ mediaFile.label }}
+			</ion-label>
+			<div padding-vertical>
+				<div *ngIf="mediaFile.file != undefined">
+					{{ mediaFile.name}} ({{ mediaFile.size | number:'':locale}} MB)
+				</div>
+				<input *ngIf="mediaFile.file == undefined" type="file" accept="audio/mp3, video/mp4" (change)="prepareMediaFile($event)" />
+			</div>
+			<ion-button *ngIf="mediaFile.file != undefined" fill="clear" slot="end" (click)="removeMediaFile()">
+				<ion-icon name="trash" slot="icon-only"></ion-icon>
+			</ion-button>
+		</ion-item>
+		<ion-item class="select-file">
+			<ion-label position="stacked">
+				{{ thumbnailImage.label }}
+			</ion-label>
+			<div padding-vertical>
+				<div *ngIf="thumbnailImage.image != undefined">
+					{{ thumbnailImage.name}} ({{ thumbnailImage.size | number:'':locale}} KB)
+				</div>
+				<input *ngIf="thumbnailImage.image == undefined" type="file" accept="image/png, image/jpeg" (change)="prepareThumbnailImage($event)" />
+			</div>
+			<ion-button *ngIf="thumbnailImage.image != undefined" fill="clear" slot="end" (click)="thumbnailImage.image = undefined">
+				<ion-icon name="trash" slot="icon-only"></ion-icon>
+			</ion-button>
+		</ion-item>
+		<div class="thumbnail" padding>
+			<div *ngIf="thumbnailImage.uri">
+				<div>
+					{{ thumbnailImage.labels.current }}
+				</div>
+				<img [src]="thumbnailImage.uri" />
+			</div>
+			<div *ngIf="thumbnailImage.image">
+				<div>
+					{{ thumbnailImage.labels.new }}
+				</div>
+				<img [src]="thumbnailImage.image" />
+			</div>
+		</div>
+	</ion-content>

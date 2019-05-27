@@ -1,0 +1,52 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button color="secondary" [disabled]="processing" (click)="cancelAsync()">
+				{{ resources.cancel }}
+			</ion-button>
+		</ion-buttons>
+		<ion-buttons slot="end">
+			<ion-button color="primary" [disabled]="processing" (click)="updateAsync()">
+				{{ resources.update }}
+			</ion-button>
+		</ion-buttons>
+		<ion-title>
+			{{ title }}
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-list>
+		<ion-radio-group [value]="mode" (ionChange)="mode = $event.detail.value">
+			<ion-list-header>
+				{{ resources.header }}
+			</ion-list-header>
+			<ion-item>
+				<ion-label>
+					{{ resources.avatar }}
+				</ion-label>
+				<ion-radio value="Avatar"></ion-radio>
+			</ion-item>
+			<ion-item>
+				<ion-label>
+					{{ resources.gravatar }}
+				</ion-label>
+				<ion-radio value="Gravatar"></ion-radio>
+			</ion-item>
+		</ion-radio-group>
+		<ion-item [hidden]="mode !== 'Avatar'">
+			<input type="file" accept="image/png, image/jpeg" (change)="prepareAvatarImage($event)" />
+		</ion-item>
+		<ion-item>
+			<div>
+				<div [hidden]="mode !== 'Avatar'" class="cropper">
+					<img-cropper #imgcropper [image]="cropper.data" [settings]="cropper.settings"></img-cropper>
+				</div>
+				<div>
+					<img [src]="imageUri" [width]="cropper.settings.croppedWidth" [height]="cropper.settings.croppedHeight" />
+				</div>
+			</div>
+		</ion-item>
+	</ion-list>
+</ion-content>
